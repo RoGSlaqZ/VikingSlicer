@@ -569,7 +569,7 @@ void MaterialSyncItem::doRender(wxDC &dc)
     dc.DrawRoundedRectangle(1, 1, MATERIAL_ITEM_SIZE.x - 1, MATERIAL_ITEM_SIZE.y - 1, 5);
 
     if (m_selected) {
-        dc.SetPen(wxColour("#009688")); // ORCA selected item border color
+        dc.SetPen(wxColour("#5E81AC")); // ORCA selected item border color
         dc.SetBrush(*wxTRANSPARENT_BRUSH);
         dc.DrawRoundedRectangle(1, 1, MATERIAL_ITEM_SIZE.x - 1, MATERIAL_ITEM_SIZE.y - 1, 5);
     }
@@ -580,7 +580,7 @@ void MaterialSyncItem::doRender(wxDC &dc)
     dc.DrawRoundedRectangle(0, 0, MATERIAL_ITEM_SIZE.x, MATERIAL_ITEM_SIZE.y, 5);
 
     if (m_selected) {
-        dc.SetPen(wxPen(wxColour("#009688"), FromDIP(2))); // ORCA selected item border color
+        dc.SetPen(wxPen(wxColour("#5E81AC"), FromDIP(2))); // ORCA selected item border color
         dc.SetBrush(*wxTRANSPARENT_BRUSH);
         dc.DrawRoundedRectangle(FromDIP(1), FromDIP(1), MATERIAL_ITEM_SIZE.x - FromDIP(1), MATERIAL_ITEM_SIZE.y - FromDIP(1), 5);
     }
@@ -1420,7 +1420,7 @@ bool AmsMapingPopup::ProcessLeftDown(wxMouseEvent &event)
 void AmsMapingPopup::paintEvent(wxPaintEvent &evt)
 {
     wxPaintDC dc(this);
-    dc.SetPen(wxPen(StateColor::darkModeColorFor(wxColour("#009688")),FromDIP(2))); // ORCA use colorful border for separation
+    dc.SetPen(wxPen(StateColor::darkModeColorFor(wxColour("#5E81AC")),FromDIP(2))); // ORCA use colorful border for separation
     dc.SetBrush(*wxTRANSPARENT_BRUSH);
     dc.DrawRoundedRectangle(0, 0, GetSize().x, GetSize().y, 0);
 }
@@ -2202,7 +2202,7 @@ void AmsReplaceMaterialDialog::create()
 
     identical_filament = new Label(this, _L("Identical filament: same brand, type and color."));
     identical_filament->SetFont(Label::Body_13);
-    identical_filament->SetForegroundColour(StateColor::darkModeColorFor(wxColour("#009688")));
+    identical_filament->SetForegroundColour(StateColor::darkModeColorFor(wxColour("#5E81AC")));
 
     m_scrollview_groups = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
     m_scrollview_groups->SetScrollRate(5, 5);
