@@ -371,10 +371,11 @@ void AppConfig::set_defaults()
 
     // Orca
     if (get("stealth_mode").empty()) {
-        set_bool("stealth_mode", false);
+        // VikingSlicer: Cloud-Funktionen (Orca Cloud) standardmaessig deaktiviert
+        set_bool("stealth_mode", true);
     }
     if (get("hide_login_side_panel").empty()) {
-        set_bool("hide_login_side_panel", false);
+        set_bool("hide_login_side_panel", true);
     }
     if (get("allow_abnormal_storage").empty()) {
         set_bool("allow_abnormal_storage", false);
