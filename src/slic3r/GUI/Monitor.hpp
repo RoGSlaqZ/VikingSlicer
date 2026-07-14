@@ -54,6 +54,7 @@ namespace Slic3r {
 namespace GUI {
 
 class MediaFilePanel;
+class SdCardPanel;
 
 class AddMachinePanel : public wxPanel
 {
@@ -81,6 +82,7 @@ private:
     AddMachinePanel*    m_status_add_machine_panel;
     StatusPanel*        m_status_info_panel;
     MediaFilePanel*     m_media_file_panel;
+    SdCardPanel*        m_sd_card_panel;
     UpgradePanel*       m_upgrade_panel;
     HMSPanel*           m_hms_panel;
 

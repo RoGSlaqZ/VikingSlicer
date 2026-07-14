@@ -29,6 +29,7 @@
 #include "format.hpp"
 #include "MediaPlayCtrl.h"
 #include "MediaFilePanel.h"
+#include "SdCardPanel.hpp"
 #include "Plater.hpp"
 #include "BindDialog.hpp"
 
@@ -192,6 +193,9 @@ void MonitorPanel::init_tabpanel()
     m_tabpanel->AddPage(m_media_file_panel, _L("Storage"), "", false);
     //m_tabpanel->AddPage(m_media_file_panel, _L("Internal Storage"), "", false);
 
+    m_sd_card_panel = new SdCardPanel(m_tabpanel);
+    m_tabpanel->AddPage(m_sd_card_panel, _L("SD-Karte"), "", false);
+
     m_upgrade_panel = new UpgradePanel(m_tabpanel);
     m_tabpanel->AddPage(m_upgrade_panel, _CTX(L_CONTEXT("Update", "Firmware"), "Firmware"), "", false);
 
@@ -342,7 +346,7 @@ void MonitorPanel::update_all()
     if (!obj) {
         show_status((int)MONITOR_NO_PRINTER);
         m_hms_panel->clear_hms_tag();
-        m_tabpanel->GetBtnsListCtrl()->showNewTag(3, false);
+        m_tabpanel->GetBtnsListCtrl()->showNewTag(4, false);
         if (m_status_info_panel->IsShown()) {
             m_status_info_panel->m_media_play_ctrl->SetMachineObject(obj);
             m_status_info_panel->update(obj);
@@ -382,6 +386,8 @@ void MonitorPanel::update_all()
         m_upgrade_panel->update(obj);
     } else if (current_page == m_media_file_panel) {
         m_media_file_panel->UpdateByObj(obj);
+    } else if (current_page == m_sd_card_panel) {
+        m_sd_card_panel->UpdateByObj(obj);
     }
 
     if (current_page == m_hms_panel || (obj->GetHMS()->GetHMSItems().size() != m_hms_panel->temp_hms_list.size())) {
@@ -402,12 +408,12 @@ void MonitorPanel::update_hms_tag()
 
         if (!hmsitem.second.has_read()) {
             //show HMS new tag
-            m_tabpanel->GetBtnsListCtrl()->showNewTag(3, true);
+            m_tabpanel->GetBtnsListCtrl()->showNewTag(4, true);
             return;
         }
     }
 
-    m_tabpanel->GetBtnsListCtrl()->showNewTag(3, false);
+    m_tabpanel->GetBtnsListCtrl()->showNewTag(4, false);
 }
 
 bool MonitorPanel::Show(bool show)
