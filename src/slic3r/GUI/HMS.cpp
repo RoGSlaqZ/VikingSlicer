@@ -12,7 +12,9 @@ static const char* HMS_PATH = "hms";
 static const char* HMS_LOCAL_IMG_PATH = "hms/local_image";
 
 // the local HMS info
-static unordered_set<string> package_dev_id_types {"094", "239", "093", "22E"};
+// "01P": P1P/P1S - these are usually served from the cloud only, which leaves LAN-only
+// printers showing "Unknown error <code>" instead of the actual message. Ship them locally.
+static unordered_set<string> package_dev_id_types {"094", "239", "093", "22E", "01P"};
 
 // HMS should be disabled when stealth mode is on or networking is not installed
 static bool should_disable_hms()
